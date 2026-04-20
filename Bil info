@@ -1,0 +1,124 @@
+using System;
+
+
+namespace Tabell_med_objekter
+{
+    class Bil
+    {
+        string regNr; // jeg vet det er ment til å være int, men det funker å skrive nummer og bokstaver. Hvis det ikke er ødelagt så er det ikke noe å fikse                                                                               
+        string merke;
+        string modell;
+        int arsmodell;
+        int kilometer;
+
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+        // Nullstiller feltene i objektet 
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        public void NullstillNyBil()
+        {
+            regNr = "";
+            merke = "";
+            modell = "";
+            arsmodell = 0;
+            kilometer = 0;
+        }
+
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+        // Registrer av nye elever 
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        public void RegistrerBil()
+        {
+            Console.Write("RegNr: ");
+            regNr = Console.ReadLine();
+
+            Console.Write("Merke: ");
+            merke = Console.ReadLine();
+
+            Console.Write("Modell: ");
+            modell = Console.ReadLine();
+
+            Console.Write("Årsmodell: ");
+            arsmodell = Int32.Parse(Console.ReadLine());
+        }
+
+
+ 
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+        // Skriver ut elevinformasjon for én elev 
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        public void BilInformasjon()
+        {
+            Console.WriteLine("RegNr: " + regNr);
+            Console.WriteLine("Merke: " + merke);
+            Console.WriteLine("Modell: " + modell);
+            Console.WriteLine("Årsmodell: " + arsmodell);
+            Console.WriteLine();
+        }
+
+
+
+
+
+        
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+        // Hovedprogram 
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        class MainClass
+        {
+            public static void Main(string[] args)
+            {
+                int antall = 4;
+
+ 
+
+                // Oppretter en tabell som kan inneholde elev-objekter 
+                Bil[] bilTabell = new Bil[antall];
+
+
+
+                // Fyller tabellen med "tomme" elev-objekter 
+                for (int i = 0; i < antall; i++)
+                {
+                    bilTabell[i] = new Bil();
+                    bilTabell[i].NullstillNyBil();
+                }
+
+
+
+                // Registrere elever
+                for (int i = 0; i < antall; i++)
+                {
+                    bilTabell[i].RegistrerBil();
+                }
+
+
+
+                // Utskrift av alle elevene i tabellen
+                Console.WriteLine();
+                Console.WriteLine("Utskrift av de dritt bilene");
+                Console.WriteLine("-----------");
+                Console.WriteLine();
+
+                for (int i = 0; i < antall; i++)
+                {
+                    bilTabell[i].BilInformasjon();
+                }
+
+                Console.ReadLine();
+            }
+        }
+    }
+}
